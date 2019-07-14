@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,11 +11,8 @@ namespace Aula1
     {
         static void Main(string[] args)
         {
-
-            Console.WriteLine("Lista de Alunos");
-
             Pessoa pessoa = new Pessoa();
-
+            Console.WriteLine("Lista de Alunos");
 
             Console.Write("Digite o nome: ");
             pessoa.Nome = Console.ReadLine();
@@ -22,20 +20,18 @@ namespace Aula1
             Console.Write("Digite o numero do telefone: ");
             pessoa.NumeroTelefone = Console.ReadLine();
 
+            pessoa.Gravar();
 
-            string dados = pessoa.DadosPessoa();
-            Console.WriteLine(dados);
-
-            pessoa.Gravar(pessoa);
-
-            //List<Pessoa> pessoas = pessoa.Ler();
-            //foreach (Pessoa p in pessoas)
-            //{
-            //    Console.WriteLine(p.DadosPessoa());
-            //}
-
+            List<Pessoa> pessoas = pessoa.Ler();
+            Console.WriteLine("***** Lista Pessoas *****");
+            foreach (var p in pessoas) 
+            {
+                Console.WriteLine("Nome: " + " - " + p.NumeroTelefone);
+            }
 
             Console.ReadLine();
+
+
         }
     
     }
