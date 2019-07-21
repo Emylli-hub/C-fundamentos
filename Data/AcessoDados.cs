@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Data
 {
-    class AcessoDados
+    public class AcessoDados
     {
         #region CamposPrivados
             private StreamWriter streamWriter;
@@ -42,18 +42,46 @@ namespace Data
                 List<string> linhas = new List<string>();
 
                 streamReader = File.OpenText(caminhoArquivo + nomeArquivo);
-                while (streamReader.EndOfStream != true)
-                {
-                    string linha = streamReader.ReadLine();
-                linhas.Add(linha);
+                    while (streamReader.EndOfStream != true)
+                    {
+                        string linha = streamReader.ReadLine();
+                    linhas.Add(linha);
 
 
-                }
-            streamReader.Close();
+                    }
+                streamReader.Close();
 
-            return linhas;
+                return linhas;
 
             }
+            public void Deletar(string nome)
+            {
+                    List<String> linhas = Ler();
+                    List<String> linhas2 = new List<string>();
+
+                foreach (var item in linhas)
+                {
+                    if (!item.Contains(nome))
+                    {
+                        linhas2.Add(item);
+                    }
+                }
+
+                GravarDelete(linhas2);
+            }
+
+            private void GravarDelete(List<string> linhas)
+            {
+                System.IO.File.Delete(caminhoArquivo + nomeArquivo);
+                streamWriter = File.AppendText(caminhoArquivo + nomeArquivo);
+                foreach (var item in linhas)
+                {
+                    streamWriter.WriteLine(item);
+
+                }
+                streamWriter.Close();
+            }
+            
 
         #endregion
     }

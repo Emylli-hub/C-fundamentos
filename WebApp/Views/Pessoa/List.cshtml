@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Data.Pessoa>
+﻿@model IEnumerable<Dominio.Pessoa>
 
 @{
     ViewBag.Title = "List";
@@ -32,7 +32,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
             @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new {  nome=item.Nome  })
         </td>
     </tr>
 }
