@@ -23,6 +23,7 @@ namespace WindowsForms
         }
 
 
+
         private void BntLimpar_Click(object sender, EventArgs e)
         {
             Limpar();
@@ -31,7 +32,7 @@ namespace WindowsForms
         private void BntSalvar_Click(object sender, EventArgs e)
         {
             p.Nome = txtNome.Text;
-            p.NumeroTelefone = txbTelefone.Text;
+            p.Contato.NumeroTelefone = txbTelefone.Text;
             ps.Gravar(p);
             Limpar();
             CarregaPessoa();
@@ -43,7 +44,13 @@ namespace WindowsForms
         }
         private void CarregaPessoa()
         {
-            dgvPessoas.DataSource = ps.Ler();
+            List<Pessoa> pessoas = new List<Pessoa>();
+            pessoas = ps.Ler();
+            foreach (var item in pessoas)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                dgvPessoas.Rows.Add();
+            }
         }
     }
 }

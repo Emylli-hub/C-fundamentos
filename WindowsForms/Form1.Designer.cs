@@ -35,6 +35,9 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txbTelefone = new System.Windows.Forms.TextBox();
             this.dgvPessoas = new System.Windows.Forms.DataGridView();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nome = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Telefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPessoas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -94,10 +97,29 @@
             // dgvPessoas
             // 
             this.dgvPessoas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPessoas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Id,
+            this.Nome,
+            this.Telefone});
             this.dgvPessoas.Location = new System.Drawing.Point(83, 213);
             this.dgvPessoas.Name = "dgvPessoas";
             this.dgvPessoas.Size = new System.Drawing.Size(454, 212);
             this.dgvPessoas.TabIndex = 6;
+            // 
+            // Id
+            // 
+            this.Id.HeaderText = "Id";
+            this.Id.Name = "Id";
+            // 
+            // Nome
+            // 
+            this.Nome.HeaderText = "Nome";
+            this.Nome.Name = "Nome";
+            // 
+            // Telefone
+            // 
+            this.Telefone.HeaderText = "Telefone";
+            this.Telefone.Name = "Telefone";
             // 
             // Form1
             // 
@@ -129,6 +151,9 @@
         private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.TextBox txbTelefone;
         private System.Windows.Forms.DataGridView dgvPessoas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nome;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Telefone;
     }
 }
 
