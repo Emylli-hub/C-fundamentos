@@ -44,12 +44,46 @@ namespace WindowsForms
         }
         private void CarregaPessoa()
         {
+            dgvPessoas.Rows.Clear();
             List<Pessoa> pessoas = new List<Pessoa>();
             pessoas = ps.Ler();
             foreach (var item in pessoas)
             {
-                DataGridViewRow row = new DataGridViewRow();
-                dgvPessoas.Rows.Add();
+                string[] row = new string[3];
+                row[0] = item.Id.ToString();
+                row[1] = item.Nome;
+                row[2] = item.Contato.NumeroTelefone;
+
+                dgvPessoas.Rows.Add(row);
+            }
+
+
+            if (dgvPessoas.Columns.Count==3)
+            {
+                dgvPessoas.Columns.Add( addBntExluir() );
+            }
+        }
+
+        private DataGridViewButtonColumn addBntExluir()
+        {
+            DataGridViewButtonColumn colBtn = new DataGridViewButtonColumn();
+            colBtn.HeaderText = "";
+            colBtn.Text = "Excluir";
+            colBtn.Name = "btnExcluir";
+            colBtn.UseColumnTextForButtonValue = true;
+            return colBtn;
+        }
+
+        private void DgvPessoas_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.ColumnIndex;
+            if ( index==3 )
+            {
+                
+                int indexLinha = e.RowIndex;
+                int id = Convert.ToInt32(dgvPessoas.Rows[indexLinha].Cells[0].Value);
+                ps.Deletar(id);
+                CarregaPessoa();
             }
         }
     }

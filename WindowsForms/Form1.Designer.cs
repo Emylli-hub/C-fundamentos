@@ -105,6 +105,7 @@
             this.dgvPessoas.Name = "dgvPessoas";
             this.dgvPessoas.Size = new System.Drawing.Size(454, 212);
             this.dgvPessoas.TabIndex = 6;
+            this.dgvPessoas.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvPessoas_CellContentClick);
             // 
             // Id
             // 
